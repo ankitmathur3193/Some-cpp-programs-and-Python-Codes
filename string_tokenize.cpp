@@ -2,7 +2,7 @@
 #include<string>
 #include<vector>
 using namespace std;
-vector<string> tokenize(string &s,vector<string> &tokens,string delim = " ")
+void tokenize(string &s,vector<string> &tokens,string delim = " ")
 {
 	int lastpos=s.find_first_not_of(delim,0);//skipping the delim in starting and finding starting of substring
 	int pos=s.find_first_of(delim,lastpos);//finding first token after substring ends
@@ -18,7 +18,7 @@ vector<string> tokenize(string &s,vector<string> &tokens,string delim = " ")
 		//find the end of string
 		pos=s.find_first_of(delim,lastpos);
 	}
-	return tokens;
+	//return tokens;
 }
 int main()
 {
@@ -29,7 +29,7 @@ int main()
 	{
 		cin>>y;
 		vector<string>p;
-		p=tokenize(y,p," .-,");
+		tokenize(y,p," .-,");
 		for(vector<string>::iterator it=p.begin();it!=p.end();++it)
 		{
 			cout<<*it<<endl;
