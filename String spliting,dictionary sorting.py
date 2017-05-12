@@ -29,25 +29,26 @@ keywords=raw_input()
 #keywords=re.split('; |, |\*|\n| ',keywords)
 keywords=re.split(' |;|; |,|, |\.|\. ',keywords)
 #print keywords
-n=int(raw_input())
-s=dict()
-for i in xrange(n):
-	p=int(raw_input())
-	temp=raw_input()
-	temp=re.split(' |;|; |,|, |\.|\. ',temp)
+total_no_of_reviews=int(raw_input())
+mydict=dict()
+for i in xrange(total_no_of_reviews):
+	hotel_id=int(raw_input())
+	hotel_review=raw_input()
+	hotel_review=re.split(' |;|; |,|, |\.|\. ',hotel_review)
 	count=0
-	for r in temp:
+	for r in hotel_review:
 		if r in keywords:
 			count=count+1
 	
-	if s.has_key(p):
-		s[p]+=count
+	if mydict.has_key(hotel_id):
+		mydict[hotel_id]+=count
 	else:
-		s[p]=count	
+		mydict[hotel_id]=count	
 #print s
 	
-to_sort = s.items()#list of tupples to sort
-ans = sorted(to_sort,key = lambda x:(-x[1],x[0]))
+to_sort_list_of_tuples = mydict.items()#list of tupples to sort
+ans = sorted(to_sort_list_of_tuples,key = lambda x:(-x[1],x[0]))#revese sort on values,but if values is same
+																 #then sort accoring to hotel_id
 	
 for p in ans:
-	print p[0],	
+	print p[0],	#printing hotel_id in descending order
